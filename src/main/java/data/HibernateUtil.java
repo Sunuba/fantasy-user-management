@@ -17,12 +17,11 @@ public class HibernateUtil {
             Configuration configuration = new Configuration();
             configuration.addAnnotatedClass(User.class);
             StandardServiceRegistryBuilder serviceBuilder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
-            configuration.buildSessionFactory(serviceBuilder.build());
+            return configuration.buildSessionFactory(serviceBuilder.build());
         } catch (Exception e){
             e.printStackTrace();
             throw new RuntimeException("There was an error building the factory");
         }
-        return null;
     }
 
     public static SessionFactory getSessionFactory(){
